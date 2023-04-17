@@ -3,11 +3,10 @@ package handler
 import (
 	"net/mail"
 	"time"
-
-	"github.com/vanderscycle/3D-printer-exchange/database"
-	"github.com/vanderscycle/3D-printer-exchange/helper"
-	"github.com/vanderscycle/3D-printer-exchange/middleware"
-	"github.com/vanderscycle/3D-printer-exchange/model"
+	"github.com/Vanderscycle/3D-Printer-Exchange/database"
+	"github.com/Vanderscycle/3D-Printer-Exchange/helper"
+	"github.com/Vanderscycle/3D-Printer-Exchange/middleware"
+	"github.com/Vanderscycle/3D-Printer-Exchange/model"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"

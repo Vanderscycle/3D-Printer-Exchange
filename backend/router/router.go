@@ -1,7 +1,7 @@
 package router
 
 import (
- "github.com/adhtanjung/go_rest_api/handler"
+	"github.com/Vanderscycle/3D-Printer-Exchange/handler"
  "github.com/gofiber/fiber/v2"
 )// SetupRoutes func
 func SetupRoutes(app *fiber.App) {
