@@ -1,0 +1,11 @@
+#+title: Todo
+* 3d Printer Exchanged
+** Backend
+*** gofiber vs NestJS?
+** Frontend
+*** TailwindCSS [[https://tailwindcss.com/docs/guides/sveltekit][installation]]
+** DevOps
+** Testing
+*** Cypress
+** Documentation
+o
