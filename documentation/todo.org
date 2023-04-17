@@ -3,8 +3,9 @@
 ** Backend
 *** gofiber vs NestJS?
 Gofiber, go mod ~go mod init github.com/[YourGithubAccount]/[YourProjectName]~
-[[https://medium.com/@adhtanjung/how-to-build-rest-api-using-go-fiber-gorm-orm-and-postgresql-a454848672a0][Gofiber]] tutorial
- ** Frontend
+[[https://medium.com/@adhtanjung/how-to-build-rest-api-using-go-fiber-gorm-orm-and-postgresql-a454848672a0][Gofiber]] tutorial and [[https://github.com/gofiber/recipes][recipes]]
+
+** Frontend
 *** TailwindCSS [[https://tailwindcss.com/docs/guides/sveltekit][installation]]
 ** DevOps
 ** Testing
