@@ -5,7 +5,7 @@ import (
 	"time"
 	"github.com/Vanderscycle/3D-Printer-Exchange/database"
 	"github.com/Vanderscycle/3D-Printer-Exchange/helper"
-	"github.com/Vanderscycle/3D-Printer-Exchange/middleware"
+	// "github.com/Vanderscycle/3D-Printer-Exchange/middleware"
 	"github.com/Vanderscycle/3D-Printer-Exchange/model"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
