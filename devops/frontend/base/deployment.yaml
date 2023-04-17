@@ -1,0 +1,31 @@
+
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+        - name: nextjs
+          image: vandercycle/professional-website:latest
+          resources:
+            requests:
+              cpu: 300m
+              memory: 256Mi
+            limits:
+              memory: 256Mi
+          ports:
+            - name: http
+              containerPort: 3000
+          # readinessProbe: # To check if the Pod is ready to serve traffic or not
+          #   httpGet:
+          #     path: /
+          #     port: 3000
+          #     scheme: HTTP
+          #   initialDelaySeconds: 5
+          #   timeoutSeconds: 1
