@@ -4,6 +4,9 @@
 *** gofiber vs NestJS?
 Gofiber, go mod ~go mod init github.com/[YourGithubAccount]/[YourProjectName]~
 [[https://medium.com/@adhtanjung/how-to-build-rest-api-using-go-fiber-gorm-orm-and-postgresql-a454848672a0][Gofiber]] tutorial and [[https://github.com/gofiber/recipes][recipes]]
+**** Lessons learned
+- ~go get -d ./...~ to go get everything
+- Imports from a public repo are easily done using "github/[acct]/[repo]"; private is more [[https://stackoverflow.com/questions/27500861/whats-the-proper-way-to-go-get-a-private-repository][complex]]
 
 ** Frontend
 *** TailwindCSS [[https://tailwindcss.com/docs/guides/sveltekit][installation]]
