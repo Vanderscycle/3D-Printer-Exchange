@@ -8,8 +8,8 @@ import (
 
 	"gorm.io/driver/postgres"
 
-"github.com/Vanderscycle/3D-Printer-Exchange/model"
-"github.com/Vanderscycle/3D-Printer-Exchange/config"
+	"github.com/Vanderscycle/3D-Printer-Exchange/model"
+	"github.com/Vanderscycle/3D-Printer-Exchange/config"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )

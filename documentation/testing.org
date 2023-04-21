@@ -1,0 +1,14 @@
+#+title: Testing
+#+author: Henri Vandersleyen
+
+* Testing
+** Backend
+*** e2e testing
+Decided to use httpie instead of Postman to automate testing. Also, been meaning to move away from bash for anything other than small unix scripts. Will use Python due to his ability to call subprocesses.
+
+** Frontend
+*** Unit testing
+Using Cypress
+*** E2e testing
+Cypres
+*** Code Coverage

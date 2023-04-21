@@ -20,6 +20,12 @@ func valid(email string) bool {
 }
 
 // Get All Users from db
+
+// GetAllUser godoc
+// @Summary      Show all users
+// @Description  show all users
+// @Tags         users
+// @Router       /api/{user} [get]
 func GetAllUsers(c *fiber.Ctx) error {
 	db := database.DB.Db
 	var users []model.User

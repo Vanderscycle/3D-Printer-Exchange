@@ -1,0 +1,18 @@
+info:
+  contact:
+    email: support@swagger.io
+    name: Henri Vandersleyen
+    url: http://www.swagger.io/support
+  description: This is a sample server celler server.
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /api/{user}:
+    get:
+      description: show all users
+      responses: {}
+      summary: Show all users
+      tags:
+      - users
+swagger: "2.0"
