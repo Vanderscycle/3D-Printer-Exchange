@@ -1,18 +1,74 @@
 info:
   contact:
-    email: support@swagger.io
+    email: henri-vandersleyen@protonmail.com
     name: Henri Vandersleyen
     url: http://www.swagger.io/support
   description: This is a sample server celler server.
+  license:
+    name: BSD-3-Clause license
+    url: https://opensource.org/license/bsd-3-clause/
   termsOfService: http://swagger.io/terms/
-  title: Swagger Example API
+  title: Printer Exchange Api
   version: "1.0"
 paths:
-  /api/{user}:
-    get:
-      description: show all users
+  /api/user:
+    post:
+      consumes:
+      - application/json
+      description: create a new user
+      produces:
+      - application/json
       responses: {}
-      summary: Show all users
+      summary: create a new user
+      tags:
+      - users
+  /api/user/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a user
+      parameters:
+      - description: User Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Delete a user
+      tags:
+      - users
+    get:
+      consumes:
+      - application/json
+      description: get user by ID
+      parameters:
+      - description: User Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: show a user's account
+      tags:
+      - users
+    patch:
+      consumes:
+      - application/json
+      description: Updates a user info
+      parameters:
+      - description: User Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses: {}
+      summary: Updates a user info
       tags:
       - users
 swagger: "2.0"

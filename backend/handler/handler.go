@@ -20,10 +20,11 @@ func valid(email string) bool {
 }
 
 // GetAllUser 	godoc
-// @Summary      Show all users
-// @Description  show all users
-// @Tags         users
-// @Router       /api/{user} [get]
+//	@Summary		Show all users accounts
+//	@Description	show all users
+//	@Tags			users
+//	@Router			/api/user [get]
+
 func GetAllUsers(c *fiber.Ctx) error {
 	db := database.DB.Db
 	var users []model.User
@@ -40,7 +41,14 @@ func GetAllUsers(c *fiber.Ctx) error {
 	return c.Status(200).JSON(fiber.Map{"status": "sucess", "message": "Users Found", "data": users})
 }
 
-// GetSingleUser from db
+// GetSingleUser 	godoc
+//	@Summary		show a user's account
+//	@Description	get user by ID
+//	@Tags			users
+//	@Accept			json
+//	@Produce		json
+//	@Param			id	path		int	true	"User Id"
+//	@Router			/api/user/{id} [get]
 func GetSingleUser(c *fiber.Ctx) error {
 	db := database.DB.Db
 
@@ -59,6 +67,13 @@ func GetSingleUser(c *fiber.Ctx) error {
 	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "User Found", "data": user})
 }
 
+// CreateUser godoc
+//	@Summary		create a new user
+//	@Description	create a new user
+//	@Tags			users
+//	@Accept			json
+//	@Produce		json
+//	@Router			/api/user [post]
 func CreateUser(c *fiber.Ctx) error {
 	db := database.DB.Db
 	user := new(model.User)
@@ -92,6 +107,14 @@ func CreateUser(c *fiber.Ctx) error {
 	return c.Status(201).JSON(fiber.Map{"status": "success", "message": "User has created", "data": user})
 }
 
+// UpdateUser 	godoc
+//	@Summary		Updates a user info
+//	@Description	Updates a user info
+//	@Tags			users
+//	@Accept			json
+//	@Produce		json
+//	@Param			id		path		int					true	"User Id"
+//	@Router			/api/user/{id} [patch]
 func UpdateUser(c *fiber.Ctx) error {
 	type updateUser struct {
 		Username string `json:"username"`
@@ -127,6 +150,14 @@ func UpdateUser(c *fiber.Ctx) error {
 
 }
 
+// DeleteUserByID godoc
+//	@Summary		Delete a user
+//	@Description	Delete a user
+//	@Tags			users
+//	@Accept			json
+//	@Produce		json
+//	@Param			id	path		int					true	"User Id"
+//	@Router			/api/user/{id} [delete]
 func DeleteUserByID(c *fiber.Ctx) error {
 	db := database.DB.Db
 	var user model.User
