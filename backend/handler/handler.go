@@ -1,8 +1,6 @@
 package handler
 
 import (
-	"net/mail"
-	"time"
 	"github.com/Vanderscycle/3D-Printer-Exchange/database"
 	"github.com/Vanderscycle/3D-Printer-Exchange/helper"
 	"github.com/Vanderscycle/3D-Printer-Exchange/middleware"
@@ -10,6 +8,8 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
+	"net/mail"
+	"time"
 )
 
 func valid(email string) bool {
@@ -19,9 +19,7 @@ func valid(email string) bool {
 
 }
 
-// Get All Users from db
-
-// GetAllUser godoc
+// GetAllUser 	godoc
 // @Summary      Show all users
 // @Description  show all users
 // @Tags         users

@@ -1,0 +1,6 @@
+#+title: Backend
+#+author: Henri Vandersleyen
+
+* Backend
+** Documentation
+Documenting the routes using [[https://github.com/gofiber/swagger][swagger]]

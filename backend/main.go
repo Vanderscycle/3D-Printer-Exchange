@@ -13,21 +13,26 @@ import (
 	// replace with your own docs folder, usually "github.com/username/reponame/docs"
 	_ "github.com/Vanderscycle/3D-Printer-Exchange/docs"
 )
-// @title           Swagger Example API
+
+// @title           Printer Exchange Api
 // @version         1.0
 // @description     This is a sample server celler server.
 // @termsOfService  http://swagger.io/terms/
 
 // @contact.name   Henri Vandersleyen
 // @contact.url    http://www.swagger.io/support
-// @contact.email  support@swagger.io
-func main() {
+// @contact.email  henri-vandersleyen@protonmail.com
+// @license.name  BSD-3-Clause license
+// @license.url https://opensource.org/license/bsd-3-clause/
 
+func main() {
 
 	database.Connect()
 
 	app := fiber.New()
+
 	app.Get("/swagger/*", swagger.HandlerDefault) // default
+
 	app.Use(logger.New())
 
 	app.Use(cors.New())
