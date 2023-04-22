@@ -38,7 +38,31 @@ const docTemplate = `{
                     "users"
                 ],
                 "summary": "create a new user",
-                "responses": {}
+                "parameters": [
+                    {
+                        "description": "User Data",
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.User"
+                        }
+                    },
+                    "500": {
+                        "description": "Error with input",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIError"
+                        }
+                    }
+                }
             }
         },
         "/api/user/{id}": {
@@ -63,7 +87,20 @@ const docTemplate = `{
                         "required": true
                     }
                 ],
-                "responses": {}
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.User"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIError"
+                        }
+                    }
+                }
             },
             "delete": {
                 "description": "Delete a user",
@@ -86,7 +123,20 @@ const docTemplate = `{
                         "required": true
                     }
                 ],
-                "responses": {}
+                "responses": {
+                    "200": {
+                        "description": "User deleted",
+                        "schema": {
+                            "$ref": "#/definitions/model.User"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIError"
+                        }
+                    }
+                }
             },
             "patch": {
                 "description": "Updates a user info",
@@ -107,9 +157,91 @@ const docTemplate = `{
                         "name": "id",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "description": "User Data",
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.User"
+                        }
                     }
                 ],
-                "responses": {}
+                "responses": {
+                    "200": {
+                        "description": "User created",
+                        "schema": {
+                            "$ref": "#/definitions/model.User"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIError"
+                        }
+                    },
+                    "500": {
+                        "description": "Error with input",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIError"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "gorm.DeletedAt": {
+            "type": "object",
+            "properties": {
+                "time": {
+                    "type": "string"
+                },
+                "valid": {
+                    "description": "Valid is true if Time is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "model.User": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "$ref": "#/definitions/gorm.DeletedAt"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "response.APIError": {
+            "type": "object",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "errorCode": {
+                    "type": "integer"
+                },
+                "errorMessage": {
+                    "type": "string"
+                }
             }
         }
     }
@@ -125,8 +257,6 @@ var SwaggerInfo = &swag.Spec{
 	Description:      "This is a sample server celler server.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
-	LeftDelim:        "{{",
-	RightDelim:       "}}",
 }
 
 func init() {

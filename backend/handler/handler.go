@@ -5,6 +5,7 @@ import (
 	"github.com/Vanderscycle/3D-Printer-Exchange/helper"
 	"github.com/Vanderscycle/3D-Printer-Exchange/middleware"
 	"github.com/Vanderscycle/3D-Printer-Exchange/model"
+	_ "github.com/Vanderscycle/3D-Printer-Exchange/response"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
@@ -12,17 +13,21 @@ import (
 	"time"
 )
 
+//TODO: move to proper file and then use goFiber error
+// Error example
+
 func valid(email string) bool {
 	_, err := mail.ParseAddress(email)
 
 	return err == nil
-
 }
 
 // GetAllUser 	godoc
 //	@Summary		Show all users accounts
 //	@Description	show all users
 //	@Tags			users
+//	@Success		200	{array}		model.User
+//	@Failure		404	{object}	response.APIError	"Users not found"
 //	@Router			/api/user [get]
 
 func GetAllUsers(c *fiber.Ctx) error {
@@ -42,12 +47,15 @@ func GetAllUsers(c *fiber.Ctx) error {
 }
 
 // GetSingleUser 	godoc
+//
 //	@Summary		show a user's account
 //	@Description	get user by ID
 //	@Tags			users
 //	@Accept			json
 //	@Produce		json
 //	@Param			id	path		int	true	"User Id"
+//	@Success		200	{object}	model.User
+//	@Failure		404	{object}	response.APIError	"User not found"
 //	@Router			/api/user/{id} [get]
 func GetSingleUser(c *fiber.Ctx) error {
 	db := database.DB.Db
@@ -68,11 +76,15 @@ func GetSingleUser(c *fiber.Ctx) error {
 }
 
 // CreateUser godoc
+//
 //	@Summary		create a new user
 //	@Description	create a new user
 //	@Tags			users
 //	@Accept			json
 //	@Produce		json
+//	@Param			message	body		model.User	true	"User Data"
+//	@Success		200		{object}	model.User
+//	@Failure		500		{object}	response.APIError	"Error with input"
 //	@Router			/api/user [post]
 func CreateUser(c *fiber.Ctx) error {
 	db := database.DB.Db
@@ -108,12 +120,17 @@ func CreateUser(c *fiber.Ctx) error {
 }
 
 // UpdateUser 	godoc
+//
 //	@Summary		Updates a user info
 //	@Description	Updates a user info
 //	@Tags			users
 //	@Accept			json
 //	@Produce		json
 //	@Param			id		path		int					true	"User Id"
+//	@Param			message	body		model.User			true	"User Data"
+//	@Success		200		{object}	model.User			"User created"
+//	@Failure		500		{object}	response.APIError	"Error with input"
+//	@Failure		404		{object}	response.APIError	"User not found"
 //	@Router			/api/user/{id} [patch]
 func UpdateUser(c *fiber.Ctx) error {
 	type updateUser struct {
@@ -151,12 +168,15 @@ func UpdateUser(c *fiber.Ctx) error {
 }
 
 // DeleteUserByID godoc
+//
 //	@Summary		Delete a user
 //	@Description	Delete a user
 //	@Tags			users
 //	@Accept			json
 //	@Produce		json
 //	@Param			id	path		int					true	"User Id"
+//	@Success		200	{object}	model.User			"User deleted"
+//	@Failure		404	{object}	response.APIError	"User not found"
 //	@Router			/api/user/{id} [delete]
 func DeleteUserByID(c *fiber.Ctx) error {
 	db := database.DB.Db

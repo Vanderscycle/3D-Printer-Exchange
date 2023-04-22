@@ -1,3 +1,38 @@
+definitions:
+  gorm.DeletedAt:
+    properties:
+      time:
+        type: string
+      valid:
+        description: Valid is true if Time is not NULL
+        type: boolean
+    type: object
+  model.User:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      email:
+        type: string
+      id:
+        type: string
+      password:
+        type: string
+      updatedAt:
+        type: string
+      username:
+        type: string
+    type: object
+  response.APIError:
+    properties:
+      createdAt:
+        type: string
+      errorCode:
+        type: integer
+      errorMessage:
+        type: string
+    type: object
 info:
   contact:
     email: henri-vandersleyen@protonmail.com
@@ -16,9 +51,24 @@ paths:
       consumes:
       - application/json
       description: create a new user
+      parameters:
+      - description: User Data
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
       produces:
       - application/json
-      responses: {}
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.User'
+        "500":
+          description: Error with input
+          schema:
+            $ref: '#/definitions/response.APIError'
       summary: create a new user
       tags:
       - users
@@ -35,7 +85,15 @@ paths:
         type: integer
       produces:
       - application/json
-      responses: {}
+      responses:
+        "200":
+          description: User deleted
+          schema:
+            $ref: '#/definitions/model.User'
+        "404":
+          description: User not found
+          schema:
+            $ref: '#/definitions/response.APIError'
       summary: Delete a user
       tags:
       - users
@@ -51,7 +109,15 @@ paths:
         type: integer
       produces:
       - application/json
-      responses: {}
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.User'
+        "404":
+          description: User not found
+          schema:
+            $ref: '#/definitions/response.APIError'
       summary: show a user's account
       tags:
       - users
@@ -65,9 +131,27 @@ paths:
         name: id
         required: true
         type: integer
+      - description: User Data
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
       produces:
       - application/json
-      responses: {}
+      responses:
+        "200":
+          description: User created
+          schema:
+            $ref: '#/definitions/model.User'
+        "404":
+          description: User not found
+          schema:
+            $ref: '#/definitions/response.APIError'
+        "500":
+          description: Error with input
+          schema:
+            $ref: '#/definitions/response.APIError'
       summary: Updates a user info
       tags:
       - users

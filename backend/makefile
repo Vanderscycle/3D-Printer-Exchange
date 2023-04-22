@@ -5,7 +5,7 @@
 # @version 0.1
 
 fmt:
-	swag init
+	swag init --parseDependency --parseInternal
 	swag fmt
 	go fmt github.com/...
 
