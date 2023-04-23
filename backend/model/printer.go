@@ -7,18 +7,18 @@ import (
 
 type Printer struct {
 	gorm.Model
-	ID       uuid.UUID `gorm:"type:uuid;"`
-	User string `gorm:"user"`
-	Brand string `gorm:"brand"`
-	Name 	string    `json:"name"`
+	ID          uuid.UUID `gorm:"type:uuid;"`
+	User        string    `gorm:"user"`
+	Brand       string    `gorm:"brand"`
+	Name        string    `json:"name"`
 	PowerSupply string    `json:"powerSupply"`
-	Probe string `json:"probe"`
-	Board string `json:"board"`
-	Hotend string    `json:"hotend"`
-	Extruder string `json:extruder`
-	Nozzle int `json:"nozzle"`
-	BuildVolume string `json:"buildVolume"`
-	Mods string `json:"mods"` //REVIEW: should be a k/v nested obj instead of a str
+	Probe       string    `json:"probe"`
+	Board       string    `json:"board"`
+	Hotend      string    `json:"hotend"`
+	Extruder    string    `json:extruder`
+	Nozzle      int       `json:"nozzle"`
+	BuildVolume string    `json:"buildVolume"`
+	Mods        string    `json:"mods"` //REVIEW: should be a k/v nested obj instead of a str
 } // Users struct
 
 type Printers struct {

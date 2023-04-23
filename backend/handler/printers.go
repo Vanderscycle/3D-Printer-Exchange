@@ -2,18 +2,14 @@ package handler
 
 import (
 	"github.com/Vanderscycle/3D-Printer-Exchange/database"
-	"github.com/Vanderscycle/3D-Printer-Exchange/helper"
-	"github.com/Vanderscycle/3D-Printer-Exchange/middleware"
 	"github.com/Vanderscycle/3D-Printer-Exchange/model"
 	_ "github.com/Vanderscycle/3D-Printer-Exchange/response"
-	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
-	"net/mail"
-	"time"
 )
 
 // GetAllPrinters	godoc
+//
 //	@Summary		Show all printers listed
 //	@Description	show all printers
 //	@Tags			printers
@@ -37,9 +33,10 @@ func GetAllPrinters(c *fiber.Ctx) error { //TODO add a get all for a user
 }
 
 // GetSinglePrinter 	godoc
+//
 //	@Summary		show the data for printer
 //	@Description	get printer data by ID
-//	@Tags		printers
+//	@Tags			printers
 //	@Accept			json
 //	@Produce		json
 //	@Param			id	path		int	true	"Printer Id"
@@ -65,6 +62,7 @@ func GetSinglePrinter(c *fiber.Ctx) error {
 }
 
 // CreatePrinter godoc
+//
 //	@Summary		add a new printer to the DB
 //	@Description	create a new printer object
 //	@Tags			printer
@@ -93,29 +91,30 @@ func CreatePrinter(c *fiber.Ctx) error {
 }
 
 // UpdatePrinter 	godoc
+//
 //	@Summary		Updates a user's printer info
 //	@Description	Updates a printer data
 //	@Tags			printer
 //	@Accept			json
 //	@Produce		json
 //	@Param			id		path		int					true	"Printer Id"
-//	@Param			message	body		model.Printer true	"Printer Data"
-//	@Success		200		{object}	model.Printer "Printer updated"
+//	@Param			message	body		model.Printer		true	"Printer Data"
+//	@Success		200		{object}	model.Printer		"Printer updated"
 //	@Failure		500		{object}	response.APIError	"Error with input"
 //	@Failure		404		{object}	response.APIError	"Printer not found"
 //	@Router			/api/printer/{id} [patch]
 func UpdatePrinter(c *fiber.Ctx) error {
 	type updatePrinter struct {
-		Brand string `gorm:"brand"`
-		Name 	string    `json:"name"`
-		PowerSupply string    `json:"powerSupply"`
-		Probe string `json:"probe"`
-		Board string `json:"board"`
-		Hotend string    `json:"hotend"`
-		Extruder string `json:extruder`
-		Nozzle int `json:"nozzle"`
+		Brand       string `gorm:"brand"`
+		Name        string `json:"name"`
+		PowerSupply string `json:"powerSupply"`
+		Probe       string `json:"probe"`
+		Board       string `json:"board"`
+		Hotend      string `json:"hotend"`
+		Extruder    string `json:extruder`
+		Nozzle      int    `json:"nozzle"`
 		BuildVolume string `json:"buildVolume"`
-		Mods string `json:"mods"`
+		Mods        string `json:"mods"`
 	}
 
 	db := database.DB.Db
@@ -166,7 +165,7 @@ func UpdatePrinter(c *fiber.Ctx) error {
 //	@Accept			json
 //	@Produce		json
 //	@Param			id	path		int					true	"Printer Id"
-//	@Success		200	{object}	model.Printer "Printer deleted"
+//	@Success		200	{object}	model.Printer		"Printer deleted"
 //	@Failure		404	{object}	response.APIError	"Printer not found"
 //	@Router			/api/printer /{id} [delete]
 func DeletePrinterByID(c *fiber.Ctx) error {
@@ -184,7 +183,7 @@ func DeletePrinterByID(c *fiber.Ctx) error {
 
 	}
 
-	err := db.Delete(&printer , "id = ?", id).Error
+	err := db.Delete(&printer, "id = ?", id).Error
 
 	if err != nil {
 		return c.Status(404).JSON(fiber.Map{"status": "error", "message": "Failed to delete printer data", "data": nil})
