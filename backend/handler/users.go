@@ -22,7 +22,7 @@ func valid(email string) bool {
 	return err == nil
 }
 
-// GetAllUser 	godoc
+// GetAllUsers 	godoc
 //	@Summary		Show all users accounts
 //	@Description	show all users
 //	@Tags			users
@@ -47,7 +47,6 @@ func GetAllUsers(c *fiber.Ctx) error {
 }
 
 // GetSingleUser 	godoc
-//
 //	@Summary		show a user's account
 //	@Description	get user by ID
 //	@Tags			users
@@ -76,7 +75,6 @@ func GetSingleUser(c *fiber.Ctx) error {
 }
 
 // CreateUser godoc
-//
 //	@Summary		create a new user
 //	@Description	create a new user
 //	@Tags			users
@@ -120,7 +118,6 @@ func CreateUser(c *fiber.Ctx) error {
 }
 
 // UpdateUser 	godoc
-//
 //	@Summary		Updates a user info
 //	@Description	Updates a user info
 //	@Tags			users
@@ -168,7 +165,6 @@ func UpdateUser(c *fiber.Ctx) error {
 }
 
 // DeleteUserByID godoc
-//
 //	@Summary		Delete a user
 //	@Description	Delete a user
 //	@Tags			users

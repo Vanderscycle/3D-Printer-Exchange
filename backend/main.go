@@ -24,7 +24,6 @@ import (
 //	@contact.email	henri-vandersleyen@protonmail.com
 //	@license.name	BSD-3-Clause license
 //	@license.url	https://opensource.org/license/bsd-3-clause/
-
 func main() {
 
 	database.Connect()
@@ -37,7 +36,9 @@ func main() {
 
 	app.Use(cors.New())
 
-	router.SetupRoutes(app)
+	//Routes layout
+	router.SetupUserRoutes(app)
+	router.SetupPrinterRoutes(app)
 	app.Use(func(c *fiber.Ctx) error {
 		return c.SendStatus(404) // => 404 "Not Found"
 	})

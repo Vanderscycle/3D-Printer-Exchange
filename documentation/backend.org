@@ -4,3 +4,6 @@
 * Backend
 ** Documentation
 Documenting the routes using [[https://github.com/gofiber/swagger][swagger]]
+
+** ORM
+go-orm [[https://v1.gorm.io/docs/index.html][documentation]]

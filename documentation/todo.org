@@ -14,4 +14,6 @@ Gofiber, go mod ~go mod init github.com/[YourGithubAccount]/[YourProjectName]~
 ** Testing
 *** Cypress
 ** Documentation
-o
+* Tasks
+** Backend [0/1]
+*** TODO add a printer endpoint
