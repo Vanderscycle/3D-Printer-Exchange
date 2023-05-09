@@ -11,9 +11,24 @@ Gofiber, go mod ~go mod init github.com/[YourGithubAccount]/[YourProjectName]~
 ** Frontend
 *** TailwindCSS [[https://tailwindcss.com/docs/guides/sveltekit][installation]]
 ** DevOps
+*** YAML manifests
+*** DNS 3dprinterexchange.dev
 ** Testing
 *** Cypress
 ** Documentation
+** Branding
+*** Generate logo printer + goose
 * Tasks
 ** Backend [0/1]
 *** TODO add a printer endpoint
+
+* TO organize
+- Fix swagger
+- frontend pages + layout
+- frontend api call testing (e2e)
+- backend redis cache (later)
+- backend caching https://dev.to/franciscomendes10866/caching-in-golang-using-redis-418n
+- create QR code to share printers
+- frontend auth https://github.com/nextauthjs/sveltekit-auth-example
+- frontend cookie https://blog.logrocket.com/authentication-svelte-using-cookies/
+- go clean arch https://amitshekhar.me/blog/go-backend-clean-architecture
