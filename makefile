@@ -12,5 +12,6 @@ swag:
 
 start:
 	make swag
+	go fmt .
 	(cd backend && go run main.go)
 # end

@@ -19,11 +19,11 @@ import (
 //	@description	This is a sample server celler server.
 //	@termsOfService	http://swagger.io/terms/
 
-//	@contact.name	Henri Vandersleyen
-//	@contact.url	http://www.swagger.io/support
-//	@contact.email	henri-vandersleyen@protonmail.com
-//	@license.name	BSD-3-Clause license
-//	@license.url	https://opensource.org/license/bsd-3-clause/
+// @contact.name	Henri Vandersleyen
+// @contact.url	http://www.swagger.io/support
+// @contact.email	henri-vandersleyen@protonmail.com
+// @license.name	BSD-3-Clause license
+// @license.url	https://opensource.org/license/bsd-3-clause/
 func main() {
 
 	database.Connect()
