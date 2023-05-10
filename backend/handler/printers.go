@@ -42,7 +42,7 @@ func GetAllPrinters(c *fiber.Ctx) error { //TODO add a get all for a user
 //	@Param			id	path		int	true	"Printer Id"
 //	@Success		200	{object}	model.Printer
 //	@Failure		404	{object}	response.APIError	"Printer not found"
-//	@Router			/api/printer/{id} [get]
+//	@Router			/api/printer [get]
 func GetSinglePrinter(c *fiber.Ctx) error {
 	db := database.DB.Db
 
@@ -104,7 +104,7 @@ func CreatePrinter(c *fiber.Ctx) error {
 //	@Failure		404		{object}	response.APIError	"Printer not found"
 //	@Router			/api/printer/{id} [patch]
 func UpdatePrinter(c *fiber.Ctx) error {
-	type updatePrinter struct {
+	type UpdatePrinter struct {
 		Brand       string `gorm:"brand"`
 		Name        string `json:"name"`
 		PowerSupply string `json:"powerSupply"`
@@ -131,7 +131,7 @@ func UpdatePrinter(c *fiber.Ctx) error {
 		return c.Status(404).JSON(fiber.Map{"status": "error", "message": "Printer not found", "data": nil})
 	}
 
-	var updatePrinterData updatePrinter
+	var updatePrinterData UpdatePrinter
 	err := c.BodyParser(&updatePrinterData)
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Something's wrong with your input", "data": err})
@@ -167,7 +167,7 @@ func UpdatePrinter(c *fiber.Ctx) error {
 //	@Param			id	path		int					true	"Printer Id"
 //	@Success		200	{object}	model.Printer		"Printer deleted"
 //	@Failure		404	{object}	response.APIError	"Printer not found"
-//	@Router			/api/printer /{id} [delete]
+//	@Router			/api/printer [delete]
 func DeletePrinterByID(c *fiber.Ctx) error {
 	db := database.DB.Db
 	var printer model.Printer

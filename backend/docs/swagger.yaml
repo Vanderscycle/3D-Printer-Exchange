@@ -7,6 +7,40 @@ definitions:
         description: Valid is true if Time is not NULL
         type: boolean
     type: object
+  model.Printer:
+    properties:
+      board:
+        type: string
+      brand:
+        type: string
+      buildVolume:
+        type: string
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      extruder:
+        type: string
+      hotend:
+        type: string
+      id:
+        type: string
+      mods:
+        description: 'REVIEW: should be a k/v nested obj instead of a str'
+        type: string
+      name:
+        type: string
+      nozzle:
+        type: integer
+      powerSupply:
+        type: string
+      probe:
+        type: string
+      updatedAt:
+        type: string
+      user:
+        type: string
+    type: object
   model.User:
     properties:
       createdAt:
@@ -46,6 +80,115 @@ info:
   title: Printer Exchange Api
   version: "1.0"
 paths:
+  /api/printer:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a printer
+      parameters:
+      - description: Printer Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Printer deleted
+          schema:
+            $ref: '#/definitions/model.Printer'
+        "404":
+          description: Printer not found
+          schema:
+            $ref: '#/definitions/response.APIError'
+      summary: Delete a user's printer
+      tags:
+      - printer
+    get:
+      consumes:
+      - application/json
+      description: get printer data by ID
+      parameters:
+      - description: Printer Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Printer'
+        "404":
+          description: Printer not found
+          schema:
+            $ref: '#/definitions/response.APIError'
+      summary: show the data for printer
+      tags:
+      - printers
+    post:
+      consumes:
+      - application/json
+      description: create a new printer object
+      parameters:
+      - description: Printer Data
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/model.Printer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Printer'
+        "500":
+          description: Error with input
+          schema:
+            $ref: '#/definitions/response.APIError'
+      summary: add a new printer to the DB
+      tags:
+      - printer
+  /api/printer/{id}:
+    patch:
+      consumes:
+      - application/json
+      description: Updates a printer data
+      parameters:
+      - description: Printer Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Printer Data
+        in: body
+        name: message
+        required: true
+        schema:
+          $ref: '#/definitions/model.Printer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Printer updated
+          schema:
+            $ref: '#/definitions/model.Printer'
+        "404":
+          description: Printer not found
+          schema:
+            $ref: '#/definitions/response.APIError'
+        "500":
+          description: Error with input
+          schema:
+            $ref: '#/definitions/response.APIError'
+      summary: Updates a user's printer info
+      tags:
+      - printer
   /api/user:
     post:
       consumes:
