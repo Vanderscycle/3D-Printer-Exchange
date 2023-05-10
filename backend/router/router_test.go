@@ -1,8 +1,11 @@
 package router
 
+// NOTE
+// https://dev.to/koddr/go-fiber-by-examples-testing-the-application-1ldf
 import (
 	"net/http/httptest"
 	"testing"
+	_ "github.com/google/uuid"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/stretchr/testify/assert" // add Testify package
@@ -32,12 +35,8 @@ func TestHelloRoute(t *testing.T) {
 
 	// Define Fiber app.
 	app := fiber.New()
-
-	// Create route with GET method for test
-	app.Get("/user/api", func(c *fiber.Ctx) error {
-		// Return simple string as response
-		return c.SendString("0")
-	})
+	SetupUserRoutes(app)
+	SetupPrinterRoutes(app)
 
 	// Iterate through test single test cases
 	for _, test := range tests {

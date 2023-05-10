@@ -116,7 +116,7 @@ func CreateUser(c *fiber.Ctx) error {
 	}
 
 	// Return the created user
-	return c.Status(201).JSON(fiber.Map{"status": "success", "message": "User has created", "data": user})
+	return c.Status(201).JSON(fiber.Map{"status": "success", "message": "User was created", "data": user})
 }
 
 // UpdateUser 	godoc
