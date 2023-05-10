@@ -81,52 +81,20 @@ info:
   version: "1.0"
 paths:
   /api/printer:
-    delete:
-      consumes:
-      - application/json
-      description: Delete a printer
-      parameters:
-      - description: Printer Id
-        in: path
-        name: id
-        required: true
-        type: integer
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: Printer deleted
-          schema:
-            $ref: '#/definitions/model.Printer'
-        "404":
-          description: Printer not found
-          schema:
-            $ref: '#/definitions/response.APIError'
-      summary: Delete a user's printer
-      tags:
-      - printer
     get:
-      consumes:
-      - application/json
-      description: get printer data by ID
-      parameters:
-      - description: Printer Id
-        in: path
-        name: id
-        required: true
-        type: integer
-      produces:
-      - application/json
+      description: show all printers
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/model.Printer'
+            items:
+              $ref: '#/definitions/model.Printer'
+            type: array
         "404":
-          description: Printer not found
+          description: Printers not found
           schema:
             $ref: '#/definitions/response.APIError'
-      summary: show the data for printer
+      summary: Show all printers listed
       tags:
       - printers
     post:
@@ -153,8 +121,56 @@ paths:
             $ref: '#/definitions/response.APIError'
       summary: add a new printer to the DB
       tags:
-      - printer
+      - printers
   /api/printer/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a printer
+      parameters:
+      - description: Printer Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Printer deleted
+          schema:
+            $ref: '#/definitions/model.Printer'
+        "404":
+          description: Printer not found
+          schema:
+            $ref: '#/definitions/response.APIError'
+      summary: Delete a user's printer
+      tags:
+      - printers
+    get:
+      consumes:
+      - application/json
+      description: get printer data by ID
+      parameters:
+      - description: Printer Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Printer'
+        "404":
+          description: Printer not found
+          schema:
+            $ref: '#/definitions/response.APIError'
+      summary: show the data for printer
+      tags:
+      - printers
     patch:
       consumes:
       - application/json
@@ -188,7 +204,7 @@ paths:
             $ref: '#/definitions/response.APIError'
       summary: Updates a user's printer info
       tags:
-      - printer
+      - printers
   /api/user:
     post:
       consumes:

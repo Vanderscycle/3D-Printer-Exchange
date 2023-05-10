@@ -27,6 +27,70 @@ const docTemplate = `{
     "paths": {
         "/api/printer": {
             "get": {
+                "description": "show all printers",
+                "tags": [
+                    "printers"
+                ],
+                "summary": "Show all printers listed",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.Printer"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Printers not found",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIError"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "create a new printer object",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "printers"
+                ],
+                "summary": "add a new printer to the DB",
+                "parameters": [
+                    {
+                        "description": "Printer Data",
+                        "name": "message",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Printer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.Printer"
+                        }
+                    },
+                    "500": {
+                        "description": "Error with input",
+                        "schema": {
+                            "$ref": "#/definitions/response.APIError"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/printer/{id}": {
+            "get": {
                 "description": "get printer data by ID",
                 "consumes": [
                     "application/json"
@@ -62,44 +126,6 @@ const docTemplate = `{
                     }
                 }
             },
-            "post": {
-                "description": "create a new printer object",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "printer"
-                ],
-                "summary": "add a new printer to the DB",
-                "parameters": [
-                    {
-                        "description": "Printer Data",
-                        "name": "message",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/model.Printer"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/model.Printer"
-                        }
-                    },
-                    "500": {
-                        "description": "Error with input",
-                        "schema": {
-                            "$ref": "#/definitions/response.APIError"
-                        }
-                    }
-                }
-            },
             "delete": {
                 "description": "Delete a printer",
                 "consumes": [
@@ -109,7 +135,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "printer"
+                    "printers"
                 ],
                 "summary": "Delete a user's printer",
                 "parameters": [
@@ -135,9 +161,7 @@ const docTemplate = `{
                         }
                     }
                 }
-            }
-        },
-        "/api/printer/{id}": {
+            },
             "patch": {
                 "description": "Updates a printer data",
                 "consumes": [
@@ -147,7 +171,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "printer"
+                    "printers"
                 ],
                 "summary": "Updates a user's printer info",
                 "parameters": [

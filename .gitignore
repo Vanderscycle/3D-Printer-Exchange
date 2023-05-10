@@ -4,3 +4,4 @@
 tmp/
 
 # py files
+.mypy_cache

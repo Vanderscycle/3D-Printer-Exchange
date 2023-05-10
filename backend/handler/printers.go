@@ -42,7 +42,7 @@ func GetAllPrinters(c *fiber.Ctx) error { //TODO add a get all for a user
 //	@Param			id	path		int	true	"Printer Id"
 //	@Success		200	{object}	model.Printer
 //	@Failure		404	{object}	response.APIError	"Printer not found"
-//	@Router			/api/printer [get]
+//	@Router			/api/printer/{id} [get]
 func GetSinglePrinter(c *fiber.Ctx) error {
 	db := database.DB.Db
 
@@ -65,7 +65,7 @@ func GetSinglePrinter(c *fiber.Ctx) error {
 //
 //	@Summary		add a new printer to the DB
 //	@Description	create a new printer object
-//	@Tags			printer
+//	@Tags			printers
 //	@Accept			json
 //	@Produce		json
 //	@Param			message	body		model.Printer	true	"Printer Data"
@@ -94,7 +94,7 @@ func CreatePrinter(c *fiber.Ctx) error {
 //
 //	@Summary		Updates a user's printer info
 //	@Description	Updates a printer data
-//	@Tags			printer
+//	@Tags			printers
 //	@Accept			json
 //	@Produce		json
 //	@Param			id		path		int					true	"Printer Id"
@@ -161,13 +161,13 @@ func UpdatePrinter(c *fiber.Ctx) error {
 //
 //	@Summary		Delete a user's printer
 //	@Description	Delete a printer
-//	@Tags			printer
+//	@Tags			printers
 //	@Accept			json
 //	@Produce		json
 //	@Param			id	path		int					true	"Printer Id"
 //	@Success		200	{object}	model.Printer		"Printer deleted"
 //	@Failure		404	{object}	response.APIError	"Printer not found"
-//	@Router			/api/printer [delete]
+//	@Router			/api/printer/{id} [delete]
 func DeletePrinterByID(c *fiber.Ctx) error {
 	db := database.DB.Db
 	var printer model.Printer
