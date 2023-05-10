@@ -10,4 +10,7 @@ swag:
 	(cd backend && swag init --parseDependency --parseInternal)
 	grep -v ".*Delim" ./backend/docs/docs.go > tmpfile && mv tmpfile ./backend/docs/docs.go
 
+start:
+	make swag
+	(cd backend && go run main.go)
 # end
