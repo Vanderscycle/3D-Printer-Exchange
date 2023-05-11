@@ -7,15 +7,12 @@
 	let { darkMode } = uiState;
 </script>
 
-<template class="">
-	NAVBARRR!!
-	<div class="inline-flex w-full">
-		<div class="mt-3 mx-2">
-			{#if toggleState}
-				<Heroicon icon={outlineSun} class={'text-Yellow'} />
-			{:else}
-				<Heroicon icon={outlineMoon} />
-			{/if}
-		</div>
-	</div></template
->
+<div class="inline-flex w-full">
+	<div class="mt-3 mx-2">
+		{#if toggleState}
+			<Heroicon icon={outlineSun} class={'text-Yellow'} />
+		{:else}
+			<Heroicon icon={outlineMoon} />
+		{/if}
+	</div>
+</div>
