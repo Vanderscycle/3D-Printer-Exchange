@@ -13,10 +13,8 @@
 		<Modal>
 			<slot />
 		</Modal>
-		<footer>
-			<Footer />
-		</footer>
 	</main>
+	<Footer />
 </div>
 
 <style>

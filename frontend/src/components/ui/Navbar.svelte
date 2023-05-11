@@ -5,7 +5,7 @@
 	import { uiState } from '$stores/ui';
 	import { routes } from '$stores/routes';
 	import Button from './Button.svelte';
-
+	import { goto } from "$app/navigation";
 	const unwantedRoutes: string[] = ['/philosophy', '/testbench'];
 
 	let toggleState: boolean = false;
