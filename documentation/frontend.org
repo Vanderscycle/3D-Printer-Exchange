@@ -1,6 +1,21 @@
+:PROPERTIES:
+:ID:       879cac44-19b7-4d1e-97fe-95896c07267e
+:END:
 #+title: Frontend
+#+created: May 11, 2023
+#+since:   3.0.0
 
 * Frontend
 ** UI
 *** Icons
 Decided to reuse =HeroIcons= https://github.com/tailwindlabs/heroicons
+** Misc
+
+** Security
+*** Crawlers
+Check robots.txt
+
+** Routing
+*** Dynamic routing
+https://stackoverflow.com/questions/65930303/sveltekit-how-do-i-do-slug-based-dynamic-routing
+https://kit.svelte.dev/docs/routing
