@@ -1,8 +1,8 @@
 <script>
 	import '../app.css';
 	import Modal from 'svelte-simple-modal';
- // import { uiState } from '$stores/ui';
- // 	let { darkMode } = uiState;
+	// import { uiState } from '$stores/ui';
+	// 	let { darkMode } = uiState;
 </script>
 
 <main class="dark:bg-darkBg bg-Bg h-screen">
