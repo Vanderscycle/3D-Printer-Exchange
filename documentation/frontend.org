@@ -1,0 +1,6 @@
+#+title: Frontend
+
+* Frontend
+** UI
+*** Icons
+Decided to reuse =HeroIcons= https://github.com/tailwindlabs/heroicons
