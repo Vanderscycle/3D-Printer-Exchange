@@ -2,9 +2,17 @@
 	import Heroicon from '$components/icons/heroicons/Heroicon.svelte';
 	import { sun as outlineSun } from '$components/icons/heroicons/outline';
 	import { moon as outlineMoon } from '$components/icons/heroicons/outline';
+    import { uiState } from '$stores/ui'
+    import {routes} from '$stores/routes'
+	import Button from './Button.svelte';
+
+const unwantedRoutes: string[] = ["/philosophy", "/testbench"];
+
 	let toggleState: boolean = false;
-	import { uiState } from '$stores/ui';
 	let { darkMode } = uiState;
+	let filteredNav = $routes.filter((i) => !unwantedRoutes.includes(i.url));
+
+	$: uiState.darkMode.set(!toggleState);
 </script>
 
 <div class="inline-flex w-full">
@@ -15,4 +23,6 @@
 			<Heroicon icon={outlineMoon} />
 		{/if}
 	</div>
+		{#each filteredNav as navBtn}
+			<Button callbackFn={() => goto(navBtn.url)}>{navBtn.name}</Button>{/each}
 </div>
