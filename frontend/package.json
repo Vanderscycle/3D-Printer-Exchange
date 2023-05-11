@@ -31,5 +31,8 @@
 		"typescript": "^5.0.4",
 		"vite": "^4.2.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"svelte-simple-modal": "^1.5.2"
+	}
 }
