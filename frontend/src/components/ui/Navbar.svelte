@@ -2,11 +2,11 @@
 	import Heroicon from '$components/icons/heroicons/Heroicon.svelte';
 	import { sun as outlineSun } from '$components/icons/heroicons/outline';
 	import { moon as outlineMoon } from '$components/icons/heroicons/outline';
-    import { uiState } from '$stores/ui'
-    import {routes} from '$stores/routes'
+	import { uiState } from '$stores/ui';
+	import { routes } from '$stores/routes';
 	import Button from './Button.svelte';
 
-const unwantedRoutes: string[] = ["/philosophy", "/testbench"];
+	const unwantedRoutes: string[] = ['/philosophy', '/testbench'];
 
 	let toggleState: boolean = false;
 	let { darkMode } = uiState;
@@ -15,14 +15,16 @@ const unwantedRoutes: string[] = ["/philosophy", "/testbench"];
 	$: uiState.darkMode.set(!toggleState);
 </script>
 
-<div class="inline-flex w-full">
-	<div class="mt-3 mx-2">
-		{#if toggleState}
-			<Heroicon icon={outlineSun} class={'text-Yellow'} />
-		{:else}
-			<Heroicon icon={outlineMoon} />
-		{/if}
-	</div>
+<nav class="dark:bg-darkGui bg-Gui">
+	<div class="inline-flex w-full">
+		<div class="mt-3 mx-2">
+			{#if toggleState}
+				<Heroicon icon={outlineSun} class={'text-Yellow'} />
+			{:else}
+				<Heroicon icon={outlineMoon} />
+			{/if}
+		</div>
 		{#each filteredNav as navBtn}
 			<Button callbackFn={() => goto(navBtn.url)}>{navBtn.name}</Button>{/each}
-</div>
+	</div>
+</nav>

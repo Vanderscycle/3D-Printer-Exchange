@@ -1,32 +1,32 @@
 <script lang="ts">
-	let classStr = "";
+	let classStr = '';
 
 	export { classStr as class };
-	export let defaultPositionBgColor: string = "bg-darkYellow";
-	export let toggledPositionBgColor: string = "bg-darkBlack";
+	export let defaultPositionBgColor: string = 'bg-darkYellow';
+	export let toggledPositionBgColor: string = 'bg-darkBlack';
 	export let toggleState: boolean = false;
 	export let timesToggled: number = 0;
 </script>
 
-	<button
-		type="button"
-		class={`${classStr} default focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-darkBlack`}
-		role="switch"
-		aria-checked="false"
-		on:click={() => {
-			toggleState = !toggleState;
-			timesToggled += 1;
-		}}
-	>
-		<span class="sr-only">Use setting</span>
-		<!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
-		<span
-			aria-hidden="true"
-			class={toggleState
-				? `translate-x-5 slideBall ${defaultPositionBgColor}`
-				: `translate-x-0 slideBall ${toggledPositionBgColor}`}
-		/>
-	</button>
+<button
+	type="button"
+	class={`${classStr} default focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-darkBlack`}
+	role="switch"
+	aria-checked="false"
+	on:click={() => {
+		toggleState = !toggleState;
+		timesToggled += 1;
+	}}
+>
+	<span class="sr-only">Use setting</span>
+	<!-- Enabled: "translate-x-5", Not Enabled: "translate-x-0" -->
+	<span
+		aria-hidden="true"
+		class={toggleState
+			? `translate-x-5 slideBall ${defaultPositionBgColor}`
+			: `translate-x-0 slideBall ${toggledPositionBgColor}`}
+	/>
+</button>
 
 <style lang="postcss">
 	.default {

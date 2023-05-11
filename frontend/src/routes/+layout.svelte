@@ -8,9 +8,7 @@
 </script>
 
 <div class={$darkMode === true ? 'dark h-full' : 'h-full'}>
-	<nav class="dark:bg-darkGui bg-Gui">
-		<Navbar />
-	</nav>
+	<Navbar />
 	<main class="dark:bg-darkBg bg-Bg h-screen">
 		<Modal>
 			<slot />
