@@ -3,7 +3,7 @@
 	import Modal from 'svelte-simple-modal';
 	import { uiState } from '$stores/ui';
 	let { darkMode } = uiState;
-	import Navbar from '$components/ui/navbar.svelte';
+	import Navbar from '$components/ui/Navbar.svelte';
 </script>
 
 <div class={$darkMode === true ? 'dark h-full' : 'h-full'}>
