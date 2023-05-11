@@ -5,7 +5,7 @@ class UIState {
 	darkMode: Writable<boolean>;
 
 	constructor() {
-		this.darkMode = writable(false);
+		this.darkMode = writable(true);
 	}
 }
 
