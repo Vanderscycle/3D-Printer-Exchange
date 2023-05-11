@@ -1,1 +1,1 @@
-export {default as default} from './Heroicon.svelte';
+export { default as default } from './Heroicon.svelte';
