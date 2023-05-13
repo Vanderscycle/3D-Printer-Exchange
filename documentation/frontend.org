@@ -19,3 +19,8 @@ Check robots.txt
 *** Dynamic routing
 https://stackoverflow.com/questions/65930303/sveltekit-how-do-i-do-slug-based-dynamic-routing
 https://kit.svelte.dev/docs/routing
+
+** Used input
+*** forms
+Using Vest framework https://vestjs.dev/
+Also using validator to validate input

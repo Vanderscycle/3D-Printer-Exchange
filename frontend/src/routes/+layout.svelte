@@ -9,7 +9,7 @@
 
 <div class={$darkMode === true ? 'dark h-full' : 'h-full'}>
 	<Navbar />
-	<main class="dark:bg-darkBg bg-Bg h-screen">
+	<main class="dark:bg-darkBg bg-Bg h-screen dark:text-darkText text-Text">
 		<Modal>
 			<slot />
 		</Modal>

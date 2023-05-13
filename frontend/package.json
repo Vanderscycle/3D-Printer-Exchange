@@ -34,6 +34,8 @@
 	"type": "module",
 	"dependencies": {
 		"qrcode": "^1.5.3",
-		"svelte-simple-modal": "^1.5.2"
+		"svelte-simple-modal": "^1.5.2",
+		"validator": "^13.9.0",
+		"vest": "5.0.0-next-8222e6"
 	}
 }
