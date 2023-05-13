@@ -8,12 +8,12 @@ import (
 type SellNotice struct {
 	gorm.Model
 	ID       uuid.UUID `gorm:"type:uuid;"`
-	User	User `gorm:"references:ID"`
-	Printer  Printer `gorm:"references:ID"`
-	Issue string `json:"issue"`
-	Info string `json:"info"`
-	Status string `json:"status"`
-	Location string `json:"location"` // TODO figure out geolocation
+	User     User      `gorm:"references:ID"`
+	Printer  Printer   `gorm:"references:ID"`
+	Issue    string    `json:"issue"`
+	Info     string    `json:"info"`
+	Status   string    `json:"status"`
+	Location string    `json:"location"` // TODO figure out geolocation
 
 }
 
