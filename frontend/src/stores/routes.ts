@@ -4,5 +4,6 @@ import { writable } from 'svelte/store';
 
 export const routes: Writable<NavigationButton[]> = writable([
 	{ url: '/', name: '/Home' },
+	{ url: '/browse', name: '/Browse' },
 	{ url: '/about', name: '/About' }
 ]);
