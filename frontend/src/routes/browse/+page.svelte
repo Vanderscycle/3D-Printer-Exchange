@@ -1,3 +1,12 @@
-<script lang="ts"></script>
+<script lang="ts">
 
-<div>Title</div>
+ import QRCode from "$components/ui/QRCode.svelte"
+ let message: string = "hello"
+</script>
+
+<div class="">
+    Title
+
+
+<QRCode data={message}  />
+        </div>

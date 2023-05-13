@@ -11,8 +11,6 @@
 
 	let canvas: HTMLCanvasElement;
 	export let data: string = '';
-	export let simpleModalMsg: string = 'Follow link';
-	export let hyperlink: boolean = false;
 	onMount(() => {
 		QRCode.toCanvas(canvas, data, { errorCorrectionLevel: 'H' }, (error) => {
 			if (error) {
