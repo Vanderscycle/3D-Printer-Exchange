@@ -1,3 +1,5 @@
 .env
 .dockerignore
 .gitignore
+# testing
+Cypress

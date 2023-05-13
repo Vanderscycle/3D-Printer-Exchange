@@ -5,3 +5,4 @@ tmp/
 
 # py files
 .mypy_cache
+tmpfile
