@@ -5,16 +5,16 @@
 
 	let message: string = 'hello';
 	let newSellNotice: Boolean = false;
-  import AuthForm from "$components/forms/Sellnotice.svelte";
+	import AuthForm from '$components/forms/Sellnotice.svelte';
 
-  const submit = values => console.log(values);
+	const submit = (values) => console.log(values);
 
-  const values = {
-    username: "",
-    password: "",
-    confirm_password: "",
-    email: ""
-  };
+	const values = {
+		username: '',
+		password: '',
+		confirm_password: '',
+		email: ''
+	};
 </script>
 
 <div class="">

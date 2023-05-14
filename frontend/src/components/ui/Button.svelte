@@ -4,7 +4,7 @@
 	let extraClass: string;
 	let hoverState: string = '';
 
-	export let callbackFn: () => void = console.log('click');
+	export let callbackFn: () => void = () => {console.log('click')};
 	export let hoverToggle: boolean = true;
 	export { extraClass as class };
 
