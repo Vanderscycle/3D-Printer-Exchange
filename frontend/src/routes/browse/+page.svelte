@@ -3,11 +3,12 @@
 	import Button from '$components/ui/Button.svelte';
 	import { fade } from 'svelte/transition';
 
+	import Input from '$components/ui/Input.svelte';
 	let message: string = 'hello';
 	let newSellNotice: Boolean = false;
-	import AuthForm from '$components/forms/Sellnotice.svelte';
+ import AuthForm from '$components/forms/Sellnotice.svelte';
 
-	const submit = (values) => console.log(values);
+ // const submit = (values) => console.log(values);
 
 	const values = {
 		username: '',
@@ -22,7 +23,7 @@
 
 	<Button callbackFn={() => (newSellNotice = !newSellNotice)}>Button</Button>
 	{#if newSellNotice}
-		<div transition:fade><AuthForm {values} {submit} /></div>
+		<div transition:fade><AuthForm values={values} submit={()=>console.log(values)} /></div>
 	{/if}
 
 	<QRCode data={message} />
