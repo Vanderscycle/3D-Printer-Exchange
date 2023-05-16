@@ -1,0 +1,12 @@
+#+title:Devops
+
+* Devops
+
+** Containers
+Hosted on Docker public
+
+** Infrastructure
+Hosted on a k8s cluster
+
+** TODO
+- create the docker containers repos

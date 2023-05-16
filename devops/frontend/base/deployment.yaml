@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: sveltekit-frontend
-          image: vandercycle/professional-website:latest
+          image: vandercycle/3d-printer-exchange-frontend
           resources:
             requests:
               cpu: 300m
