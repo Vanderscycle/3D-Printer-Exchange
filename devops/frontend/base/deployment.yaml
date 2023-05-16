@@ -1,9 +1,9 @@
-
 # https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nextjs
+  name: sveltekit-frontend
+  namespace: default
 spec:
   replicas: 1
   strategy:
@@ -11,7 +11,7 @@ spec:
   template:
     spec:
       containers:
-        - name: nextjs
+        - name: sveltekit-frontend
           image: vandercycle/professional-website:latest
           resources:
             requests:
