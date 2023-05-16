@@ -20,7 +20,10 @@ Check robots.txt
 https://stackoverflow.com/questions/65930303/sveltekit-how-do-i-do-slug-based-dynamic-routing
 https://kit.svelte.dev/docs/routing
 
-** Used input
+** User input
 *** forms
 Using Vest framework https://vestjs.dev/
 Also using validator to validate input
+** Testing
+e2e + components use cypress
+mocking https://mswjs.io/docs/
