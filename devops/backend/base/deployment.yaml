@@ -1,0 +1,26 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gofiber-backend
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    spec:
+      containers:
+        - name: gofiber-backend
+          image: vandercycle/professional-website-backend:latest
+          # envFrom:
+          #   - configMapRef:
+          #       name: gofiber-config
+          resources:
+            requests:
+              cpu: 300m
+              memory: 256Mi
+            limits:
+              memory: 256Mi
+          ports:
+            - name: http
+              containerPort: 5000
