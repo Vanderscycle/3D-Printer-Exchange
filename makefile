@@ -8,7 +8,7 @@
 # https://github.com/swaggo/swag/issues/1568
 swag:
 	(cd backend && swag init --parseDependency --parseInternal && swag fmt)
-	grep -v ".*Delim" ./backend/docs/docs.go > tmpfile && mv tmpfile ./backend/docs/docs.go
+	# grep -v ".*Delim" ./backend/docs/docs.go > tmpfile && mv tmpfile ./backend/docs/docs.go
 
 start-backend:
 	make swag
