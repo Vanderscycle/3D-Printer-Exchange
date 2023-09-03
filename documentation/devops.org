@@ -10,3 +10,8 @@ Hosted on a k8s cluster
 
 ** TODO
 - create the docker containers repos
+
+*** Commands
+
+- `kustomize build . | kubectl apply -f -`
+- `ctlptl apply -f kind.yaml`
