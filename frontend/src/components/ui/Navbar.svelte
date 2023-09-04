@@ -17,13 +17,13 @@
 
 <nav class="dark:bg-darkGui bg-Gui">
 	<div class="inline-flex w-full">
-		<div class="mt-3 mx-2">
+		<Button callbackFn={() => toggleState = !toggleState} class="mt-3 mx-2">
 			{#if toggleState}
 				<Heroicon icon={outlineSun} class={'text-Yellow'} />
 			{:else}
 				<Heroicon icon={outlineMoon} />
 			{/if}
-		</div>
+		</Button>
 		{#each filteredNav as navBtn}
 			<Button callbackFn={() => goto(navBtn.url)}>{navBtn.name}</Button>{/each}
 	</div>
