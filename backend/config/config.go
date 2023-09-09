@@ -8,7 +8,8 @@ import (
 
 func Config(key string) string {
 	// load .env file
-	err := godotenv.Load(".env")
+	//TODO disable during infrastructure
+	err := godotenv.Load()
 	if err != nil {
 		fmt.Print("Error loading .env file")
 	}

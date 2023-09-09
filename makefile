@@ -19,4 +19,6 @@ start-frontend:
 	(cd frontend && pnpm run format)
 	(cd frontend && pnpm run dev)
 
-# end
+#WARN: will drop db
+dev-db: 
+	(bash ./backend/scripts/start-dev-db.sh)
