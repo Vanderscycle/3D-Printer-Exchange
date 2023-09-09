@@ -59,7 +59,7 @@ def localhost():
     local_resource('localhost-frontend',
     resource_deps=['localhost-postgres'],
     serve_dir='./frontend',
-    serve_cmd='cd pnpm run dev',
+    serve_cmd='pnpm run dev',
     deps='./frontend/pages',
     readiness_probe=probe(
         period_secs=60,
