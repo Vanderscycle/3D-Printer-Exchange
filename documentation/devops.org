@@ -5,8 +5,23 @@
 ** Containers
 Hosted on Docker public
 
-** Infrastructure
+** Production Infrastructure
 Hosted on a k8s cluster
+
+** Localhost Infrastructure
+Done using tilt + kind. 
+
+Requirements: Docker, tilt, ctlptl, kind, k8s
+#+begin_src
+  bash
+ctlptl apply -f ../devops/localhost/kind.yaml
+#+end_src
+
+Confirm that the nodes are created src_bash{kubectl get nodes} and then src_bash{tilt up} to confirm.
+
+
+
+
 
 ** TODO
 - create the docker containers repos

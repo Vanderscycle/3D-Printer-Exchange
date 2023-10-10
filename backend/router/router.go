@@ -4,6 +4,13 @@ import (
 	"github.com/Vanderscycle/3D-Printer-Exchange/handler"
 	"github.com/gofiber/fiber/v2"
 ) // SetupRoutes func
+func SetupAncillaryRoutes(app *fiber.App){
+	// grouping
+	api := app.Group("/ancillary")
+	v1 := api.Group("/version") // routes
+	v1.Get("/", handler.GetVersionApi)
+}
+
 func SetupUserRoutes(app *fiber.App) {
 	// grouping
 	api := app.Group("/api")

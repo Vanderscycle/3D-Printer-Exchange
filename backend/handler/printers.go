@@ -16,7 +16,8 @@ import (
 //	@Success		200	{array}		model.Printer
 //	@Failure		404	{object}	response.APIError	"Printers not found"
 //	@Router			/api/printer [get]
-func GetAllPrinters(c *fiber.Ctx) error { //TODO add a get all for a user
+func GetAllPrinters(c *fiber.Ctx) error {
+	//TODO add a get all for a user
 	db := database.DB.Db
 	var printers []model.Printer
 

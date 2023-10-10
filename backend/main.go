@@ -19,11 +19,11 @@ import (
 //	@description	This is a sample server celler server.
 //	@termsOfService	http://swagger.io/terms/
 
-// @contact.name	Henri Vandersleyen
-// @contact.url	http://www.swagger.io/support
-// @contact.email	henri-vandersleyen@protonmail.com
-// @license.name	BSD-3-Clause license
-// @license.url	https://opensource.org/license/bsd-3-clause/
+//	@contact.name	Henri Vandersleyen
+//	@contact.url	http://www.swagger.io/support
+//	@contact.email	henri-vandersleyen@protonmail.com
+//	@license.name	BSD-3-Clause license
+//	@license.url	https://opensource.org/license/bsd-3-clause/
 func main() {
 
 	app := Setup()
@@ -44,8 +44,13 @@ func Setup() *fiber.App {
 	app.Use(cors.New())
 
 	//Routes layout
+	//TODO: a way to register all the routes in one? command
 	router.SetupUserRoutes(app)
 	router.SetupPrinterRoutes(app)
+	router.SetupAncillaryRoutes(app)
+	app.Get("/about", func(c *fiber.Ctx) error {
+		return c.SendString("about")
+	})
 
 	// Register the index route with a simple
 	// "OK" response. It should return status
