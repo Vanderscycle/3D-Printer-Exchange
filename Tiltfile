@@ -30,6 +30,9 @@ load('ext://helm_remote', 'helm_remote')
 
 
 def localhost():
+    db_port = 5432
+    backend_port = 8080
+    frontend_port = 5173
     print("""
     -----------------------------------------------------------------
     ✨ Localhost Environment
@@ -39,31 +42,31 @@ def localhost():
     update_settings(suppress_unused_image_warnings=["localhost:5005/frontend-sveltekit"])
     update_settings(suppress_unused_image_warnings=["localhost:5005/backend-fiber"])
 
-    # Local ressources
-    local_resource('localhost-postgres',
-    serve_dir='./backend/scripts/',
-    serve_cmd='bash start-dev-db.sh',
-    # cmd='make dev-db'
-
-    )
+    # ------------ db (postgresql) ------------
+    docker_compose("./backend/database/docker-compose.yml")
+    
+    # ------------ backend (goFiber) ------------
     local_resource('localhost-backend',
-    resource_deps=['localhost-postgres'],
     serve_dir='./backend',
     serve_cmd='go run main.go',
     deps='./backend/src',
     readiness_probe=probe(
         period_secs=60,
-        http_get=http_get_action(port=3001, path="/version")
+        http_get=http_get_action(port=backend_port, path="/ancillary/version/")
         )
     )
+
+    # ------------ frontend (sveltekit) ------------
     local_resource('localhost-frontend',
-    resource_deps=['localhost-postgres'],
     serve_dir='./frontend',
     serve_cmd='pnpm run dev',
     deps='./frontend/pages',
     readiness_probe=probe(
         period_secs=60,
-        http_get=http_get_action(port=5173, path="/")
+        http_get=http_get_action(port=frontend_port, path="/")
         )
     )
-localhost()
+if selection == 'localhost':
+    localhost()
+elif selection == 'infrastructure':
+    pass

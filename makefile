@@ -20,5 +20,9 @@ start-frontend:
 	(cd frontend && pnpm run dev)
 
 #WARN: will drop db
-dev-db: 
+dev-db:
 	(bash ./backend/scripts/start-dev-db.sh)
+
+# tilt + full stack localhost
+localhost-cluster:
+	ctlptl apply -f ./devops/localhost/kind.yaml
