@@ -17,8 +17,8 @@ export class GoRestClient {
     }
 
     async get(endpoint: string, id?: string | number): Promise<any> {
+        let res: any;
         try {
-            let res: any;
             if (id) {
                 res = await axios.get(`${this.baseUrl}/${endpoint}/${id}`);
             } else {
@@ -27,12 +27,25 @@ export class GoRestClient {
             if (this.debug) {
                 console.log(res)
             }
-            //TODO: fix the api
-            if (res.status === (200 | 202) ) {
-                return res.data;
+        } catch (e) {
+            console.warn(e);
+        } finally {
+            return res.data
+        }
+    }
+
+    async post(endpoint: string, payload: any, id?: string | number): Promise<any> {
+        let res: any;
+        try {
+            if (id) {
+                res = await axios.post(`${this.baseUrl}/${endpoint}/${id}`, payload);
+            } else {
+                res = await axios.post(`${this.baseUrl}/${endpoint}`, payload);
             }
         } catch (e) {
             console.warn(e);
+        } finally {
+            return res.data;
         }
     }
 }

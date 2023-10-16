@@ -79,7 +79,7 @@ func CreatePrinter(c *fiber.Ctx) error {
 
 	// Store the body in the printer and return error if encountered
 	if err := c.BodyParser(printer); err != nil {
-		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Something's wrong with your input", "data": err})
+		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Something's wrong with your input", "data": err, "input": printer})
 	}
 
 	err := db.Create(&printer).Error
@@ -112,8 +112,8 @@ func UpdatePrinter(c *fiber.Ctx) error {
 		Probe       string `json:"probe"`
 		Board       string `json:"board"`
 		Hotend      string `json:"hotend"`
-		Extruder    string `json:extruder`
-		Nozzle      int    `json:"nozzle"`
+		Extruder    string `json:"extruder"`
+		Nozzle      string `json:"nozzle"`
 		BuildVolume string `json:"buildVolume"`
 		Mods        string `json:"mods"`
 	}

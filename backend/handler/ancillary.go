@@ -10,7 +10,7 @@ import (
 //	@Summary		Shows the current version of the api
 //	@Description	shows the current version of the api
 //	@Tags			printers
-//	@Success		200	{string} string "version #"
+//	@Success		200	{string}	string				"version #"
 //	@Failure		404	{object}	response.APIError	"Printer not found"
 //	@Router			/ancillary/version/api [get]
 func GetVersionApi(c *fiber.Ctx) error {

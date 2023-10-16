@@ -15,8 +15,8 @@ type Printer struct {
 	Probe       string    `json:"probe"`
 	Board       string    `json:"board"`
 	Hotend      string    `json:"hotend"`
-	Extruder    string    `json:extruder`
-	Nozzle      int       `json:"nozzle"`
+	Extruder    string    `json:"extruder"`
+	Nozzle      string    `json:"nozzle"`
 	BuildVolume string    `json:"buildVolume"`
 	Mods        string    `json:"mods"` //REVIEW: should be a k/v nested obj instead of a str
 } // Users struct
