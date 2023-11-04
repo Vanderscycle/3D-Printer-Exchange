@@ -1,16 +1,12 @@
-# Welcome to Tilt!
-#   To get you started as quickly as possible, we have created a
-#   starter Tiltfile for you.
-#
-#   Uncomment, modify, and delete any commands as needed for your
-#   project's configuration.
 modes = ['localhost', 'infrastructure']
-selection = modes[0]
-
+selection = modes[1]
 
 # Variables
 sync_src_frontend= sync('./frontend', '/src')
-sync_src_backend= sync('./backend', '/src')
+sync_src_backend= sync('./backend', '/')
+db_port = 5432
+backend_port = 8080
+frontend_port = 5173
 
 # Build Docker image
 #   Tilt will automatically associate image builds with the resource(s)
@@ -19,8 +15,8 @@ sync_src_backend= sync('./backend', '/src')
 #   More info: https://docs.tilt.dev/api.html#api.docker_build
 #
 
-docker_build('localhost:5005/frontend-sveltekit', context='./frontend', dockerfile='./frontend/Dockerfile', live_update=[sync_src_frontend] )
-docker_build('localhost:5005/backend-fiber',context='./backend',dockerfile='./backend/Dockerfile', live_update=[sync_src_backend])
+docker_build('localhost:5000/frontend-sveltekit', context='./frontend', dockerfile='./frontend/Dockerfile', live_update=[sync_src_frontend] )
+docker_build('localhost:5000/backend-fiber',context='./backend',dockerfile='./backend/Dockerfile', live_update=[sync_src_backend])
 
 # Extensions are open-source, pre-packaged functions that extend Tilt
 #
@@ -28,11 +24,45 @@ docker_build('localhost:5005/backend-fiber',context='./backend',dockerfile='./ba
 #
 load('ext://helm_remote', 'helm_remote')
 
+# Custom UI
+# TODO: make it change between localhost/infra
+load('ext://uibutton', 'cmd_button', 'location', 'text_input')
+cmd_button(name='nav-hello-world',
+           argv=['echo', 'Hello nav!'],
+           text='Hello World',
+           location=location.NAV,
+           icon_name='waving_hand')
+
+def infrastructure():
+  print("""
+  -----------------------------------------------------------------
+  ✨ Kubernetes/Infrastructure Environment
+  -----------------------------------------------------------------
+  """.strip())
+  # Apply Kubernetes manifests
+  #   Tilt will build & push any necessary images, re-deploying your
+  #   resources as they change.
+  #
+  #   More info: https://docs.tilt.dev/api.html#api.k8s_yaml
+  k8s_fullstack="./devops/overlays/prod"
+  k8s_yaml([kustomize(k8s_fullstack, flags=['--enable-helm'])])
+
+  # Customize a Kubernetes resource
+  #   By default, Kubernetes resource names are automatically assigned
+  #   based on objects in the YAML manifests, e.g. Deployment name.
+  #
+  #   Tilt strives for sane defaults, so calling k8s_resource is
+  #   optional, and you only need to pass the arguments you want to
+  #   override.
+  #
+  #   More info: https://docs.tilt.dev/api.html#api.k8s_resource
+  #
+  k8s_resource('sveltekit-frontend',labels="frontend",port_forwards='3000:3000')
+  k8s_resource('gofiber-backend',labels="backend",port_forwards='8080:8080')
+  k8s_resource('db-postgresql',labels="db")
+
 
 def localhost():
-    db_port = 5432
-    backend_port = 8080
-    frontend_port = 5173
     print("""
     -----------------------------------------------------------------
     ✨ Localhost Environment
@@ -69,4 +99,4 @@ def localhost():
 if selection == 'localhost':
     localhost()
 elif selection == 'infrastructure':
-    pass
+    infrastructure()
