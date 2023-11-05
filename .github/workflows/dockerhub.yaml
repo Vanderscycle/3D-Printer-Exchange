@@ -1,11 +1,10 @@
-name: Docker Image CI
+name: 'Docker Image CI'
 
 on:
-  # TODO: work on it later
-  # push:
-  #   branches: [main]
+  push:
+    branches: ['main']
   pull_request:
-    branches: [main]
+    branches: ['main']
     paths:
       - frontend/**
       - backend/**
