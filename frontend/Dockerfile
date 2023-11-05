@@ -15,14 +15,14 @@ COPY .npmrc package.json pnpm-lock.yaml ./
 # Install dependencies
 RUN pnpm install --frozen-lockfile --prod
 
-# Copy the rest of the application code
-COPY . .
-
 # Build the app and prune dev dependencies
 RUN pnpm run build && pnpm prune --production
 
+# Copy the rest of the application code
+COPY . .
+
 # Use a separate stage to minimize the final image size
-FROM node:16-alpine
+FROM node:18-alpine
 # It's a good practice to not run the application as root; use the node user instead
 USER node
 
