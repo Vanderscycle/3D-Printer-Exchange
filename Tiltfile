@@ -44,7 +44,7 @@ def infrastructure():
   #   resources as they change.
   #
   #   More info: https://docs.tilt.dev/api.html#api.k8s_yaml
-  k8s_fullstack="./devops/overlays/prod"
+  k8s_fullstack="./devops/overlays/non-prod"
   k8s_yaml([kustomize(k8s_fullstack, flags=['--enable-helm'])])
 
   # Customize a Kubernetes resource

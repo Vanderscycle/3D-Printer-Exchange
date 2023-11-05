@@ -12,9 +12,7 @@ spec:
     spec:
       containers:
         - name: sveltekit-frontend
-          # TODO: make a different overlays
-          # image: vandercycle/3d-printer-exchange-frontend  
-          image: localhost:5000/frontend-sveltekit
+          image: vandercycle/3d-printer-exchange-frontend  
           resources:
             requests:
               cpu: 300m

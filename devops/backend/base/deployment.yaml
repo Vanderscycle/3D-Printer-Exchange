@@ -11,9 +11,7 @@ spec:
     spec:
       containers:
         - name: gofiber-backend
-          # TODO: make a different overlays
-          # image: vandercycle/3d-printer-exchange-backend
-          image: localhost:5000/backend-fiber
+          image: vandercycle/3d-printer-exchange-backend
           # envFrom:
           #   - configMapRef:
           #       name: gofiber-backend-cm
