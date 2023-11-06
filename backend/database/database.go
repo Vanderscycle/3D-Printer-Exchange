@@ -23,6 +23,7 @@ var DB Dbinstance
 
 // Connect function
 func Connect() {
+	config.LocalEnvFile()
 	p := config.Config("DATABASE_PORT")
 	// because our config function returns a string, we are parsing our str to int here
 	port, err := strconv.ParseUint(p, 10, 32)

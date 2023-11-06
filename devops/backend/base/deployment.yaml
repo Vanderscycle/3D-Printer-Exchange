@@ -12,9 +12,9 @@ spec:
       containers:
         - name: gofiber-backend
           image: vandercycle/3d-printer-exchange-backend
-          # envFrom:
-          #   - configMapRef:
-          #       name: gofiber-backend-cm
+          envFrom:
+            - configMapRef:
+                name: gofiber-backend-cm
           resources:
             requests:
               cpu: 300m

@@ -3,5 +3,5 @@ global:
     auth:
       postgresPassword: "postgres"
       username: "postgres"
-      password: "postgres"
+      password: "root"
       database: "postgres"

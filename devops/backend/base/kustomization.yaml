@@ -19,3 +19,4 @@ resources:
   - ./role.yaml
   - ./rolebinding.yaml
   - ./serviceaccount.yaml
+  - ./configmap.yaml

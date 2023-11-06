@@ -3,7 +3,7 @@ load('ext://uibutton', 'cmd_button', 'location', 'text_input')
 
 # Define the available modes and an initial selection
 modes = ['localhost', 'infrastructure']
-selection = modes[0]
+selection = modes[1]
 
 # Function to toggle the modes variable
 def toggle_modes(button, session, status):
@@ -100,6 +100,7 @@ def localhost():
     local_resource('localhost-backend',
     serve_dir='./backend',
     serve_cmd='go run main.go',
+    serve_env={},
     deps='./backend/src',
     readiness_probe=probe(
         period_secs=60,
@@ -111,8 +112,9 @@ def localhost():
     local_resource('localhost-frontend',
     serve_dir='./frontend',
     serve_cmd='pnpm run dev',
-    deps='./frontend',
-    # links=['localhost:{}'.format(frontend_port)],
+    deps='./frontend/pages',
+    links=['http://localhost:{}'.format(frontend_port)],
+    serve_env={},
     readiness_probe=probe(
         period_secs=60,
         http_get=http_get_action(port=frontend_port, path="/")
