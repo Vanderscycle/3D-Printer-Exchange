@@ -1,5 +1,27 @@
+# Custom UI
+load('ext://uibutton', 'cmd_button', 'location', 'text_input')
+
+# Define the available modes and an initial selection
 modes = ['localhost', 'infrastructure']
-selection = modes[1]
+selection = modes[0]
+
+# Function to toggle the modes variable
+def toggle_modes(button, session, status):
+    if selection == modes[0]:
+        selection = modes[1]
+    else:
+        selection = modes[0]
+
+
+# Create the button with a shell command to toggle the bool variable
+# cmd_button(
+#     name='toggle-button',
+#     argv=['python', '-c', toggle_modes],
+#     text='Toggle Bool',
+#     location=location.NAV,
+#     disabled=False,  # You can enable or disable the button as needed
+#     requires_confirmation=False  # Set to True if you want a confirmation dialog
+# )
 
 # Variables
 sync_src_frontend= sync('./frontend', '/src')
@@ -25,7 +47,6 @@ docker_build('localhost:5000/backend-fiber',context='./backend',dockerfile='./ba
 load('ext://helm_remote', 'helm_remote')
 
 # Custom UI
-# TODO: make it change between localhost/infra
 load('ext://uibutton', 'cmd_button', 'location', 'text_input')
 cmd_button(name='nav-hello-world',
            argv=['echo', 'Hello nav!'],
@@ -90,7 +111,8 @@ def localhost():
     local_resource('localhost-frontend',
     serve_dir='./frontend',
     serve_cmd='pnpm run dev',
-    deps='./frontend/pages',
+    deps='./frontend',
+    # links=['localhost:{}'.format(frontend_port)],
     readiness_probe=probe(
         period_secs=60,
         http_get=http_get_action(port=frontend_port, path="/")
