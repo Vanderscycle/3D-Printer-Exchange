@@ -1,27 +1,24 @@
 # Custom UI
 load('ext://uibutton', 'cmd_button', 'location', 'text_input')
+frontend=""
+cmd_button(name='frontend-dev',
+          text='Frontend Dev',
+          icon_name='bolt',
+          location=location.NAV,
+          argv=['tilt', 'patch', 'tiltfile', '(Tiltfile)', '--patch', '{"spec": {"args": ["--frontend=dev"]}}'])
+cmd_button(name='frontend-prod',
+          text='Frontend Prod',
+          icon_name='local_shipping',
+          location=location.NAV,
+          argv=['tilt', 'patch', 'tiltfile', '(Tiltfile)', '--patch', '{"spec": {"args": ["--frontend=prod"]}}'])
+local_resource('choose-a-mode', ['echo', """Must specify 'tilt up -- --frontend=dev' or 'tilt up -- --frontend=prod'
+ Click the bolt for --frontend=dev.
+ Click the truck for --frontend=prod.
+ """])
 
 # Define the available modes and an initial selection
 modes = ['localhost', 'infrastructure']
 selection = modes[1]
-
-# Function to toggle the modes variable
-def toggle_modes(button, session, status):
-    if selection == modes[0]:
-        selection = modes[1]
-    else:
-        selection = modes[0]
-
-
-# Create the button with a shell command to toggle the bool variable
-# cmd_button(
-#     name='toggle-button',
-#     argv=['python', '-c', toggle_modes],
-#     text='Toggle Bool',
-#     location=location.NAV,
-#     disabled=False,  # You can enable or disable the button as needed
-#     requires_confirmation=False  # Set to True if you want a confirmation dialog
-# )
 
 # Variables
 sync_src_frontend= sync('./frontend', '/src')
