@@ -1,6 +1,5 @@
 # Custom UI
 load('ext://uibutton', 'cmd_button', 'location', 'text_input')
-frontend=""
 cmd_button(name='frontend-dev',
           text='Frontend Dev',
           icon_name='bolt',
@@ -15,10 +14,6 @@ local_resource('choose-a-mode', ['echo', """Must specify 'tilt up -- --frontend=
  Click the bolt for --frontend=dev.
  Click the truck for --frontend=prod.
  """])
-
-# Define the available modes and an initial selection
-modes = ['localhost', 'infrastructure']
-selection = modes[1]
 
 # Variables
 sync_src_frontend= sync('./frontend', '/src')
@@ -117,6 +112,12 @@ def localhost():
         http_get=http_get_action(port=frontend_port, path="/")
         )
     )
+
+
+# Define the available modes and an initial selection
+modes = ['localhost', 'infrastructure']
+selection = modes[1]
+
 if selection == 'localhost':
     localhost()
 elif selection == 'infrastructure':
