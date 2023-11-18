@@ -17,7 +17,6 @@
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
 		"autoprefixer": "^10.4.14",
-		"cypress": "^12.9.0",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -32,11 +31,11 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"vite": "^4.2.0",
 		"axios": "^1.5.1",
 		"qrcode": "^1.5.3",
 		"svelte-simple-modal": "^1.5.2",
 		"validator": "^13.9.0",
-		"vest": "5.0.0-next-8222e6"
+		"vest": "5.0.0-next-8222e6",
+		"vite": "^4.2.0"
 	}
 }
