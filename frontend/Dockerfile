@@ -10,7 +10,7 @@ RUN apk add --no-cache curl && \
 ENV PATH /root/.pnpm/bin:$PATH
 
 # Files required by pnpm install
-COPY .npmrc package.json pnpm-lock.yaml ./
+COPY . .
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile --prod
@@ -18,8 +18,6 @@ RUN pnpm install --frozen-lockfile --prod
 # Build the app and prune dev dependencies
 RUN pnpm run build && pnpm prune --production
 
-# Copy the rest of the application code
-COPY . .
 
 # Use a separate stage to minimize the final image size
 FROM node:18-alpine
@@ -29,11 +27,12 @@ USER node
 WORKDIR /app
 
 # Copy the build output and node_modules from the previous stage
-COPY --from=builder --chown=node:node /app/.svelte-kit/output/ /app
+COPY --from=builder --chown=node:node /app/build /app
 COPY --from=builder --chown=node:node /app/node_modules /app/node_modules
 COPY --from=builder --chown=node:node /app/package.json /app/package.json
+RUN ls -al /app
 
 # Expose the port the app runs on
 EXPOSE 3000
 
-CMD ["node","./server/index.js"]
+CMD ["node","./index.js"]
