@@ -18,7 +18,6 @@ RUN pnpm install --frozen-lockfile --prod
 # Build the app and prune dev dependencies
 RUN pnpm run build && pnpm prune --production
 
-
 # Use a separate stage to minimize the final image size
 FROM node:18-alpine
 # It's a good practice to not run the application as root; use the node user instead
@@ -30,7 +29,6 @@ WORKDIR /app
 COPY --from=builder --chown=node:node /app/build /app
 COPY --from=builder --chown=node:node /app/node_modules /app/node_modules
 COPY --from=builder --chown=node:node /app/package.json /app/package.json
-RUN ls -al /app
 
 # Expose the port the app runs on
 EXPOSE 3000
