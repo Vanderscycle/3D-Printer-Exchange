@@ -116,7 +116,7 @@ def localhost():
 
 # Define the available modes and an initial selection
 modes = ['localhost', 'infrastructure']
-selection = modes[1]
+selection = modes[0]
 
 if selection == 'localhost':
     localhost()
