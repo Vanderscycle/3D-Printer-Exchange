@@ -1,22 +1,32 @@
-<script>
-	import '../app.css';
-	import Modal from 'svelte-simple-modal';
-	import { uiState } from '$stores/ui';
+<script lang="ts">
+	import "../app.css";
+	import NavBar from "$components/NavBar.svelte";
+	import Footer from "$components/Footer.svelte";
+	import { uiState } from "$stores/ui";
 	let { darkMode } = uiState;
-	import Navbar from '$components/ui/Navbar.svelte';
-	import Footer from '$components/ui/Footer.svelte';
+	import Modal from "svelte-simple-modal";
+	import { SEOIndex } from "$components/SEO";
+
 </script>
 
-<div class={$darkMode === true ? 'dark h-full' : 'h-full'}>
-	<Navbar />
-	<main class="dark:bg-darkBg bg-Bg h-screen dark:text-darkText text-Text">
+<header>
+	<SEOIndex />
+</header>
+
+<div class={$darkMode === true ? "dark h-full" : "h-full"}>
+	<nav class="dark:bg-darkGui bg-Gui">
+		<NavBar />
+	</nav>
+	<main class="dark:bg-darkBg bg-Bg h-screen">
 		<Modal>
 			<slot />
 		</Modal>
 	</main>
-	<Footer />
+	<footer>
+		<Footer />
+	</footer>
 </div>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+	@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
 </style>
