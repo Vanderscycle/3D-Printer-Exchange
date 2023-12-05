@@ -2,4 +2,4 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: gofiber-backend
-  namespace: backend
+  namespace: 3d-printer-website-backend

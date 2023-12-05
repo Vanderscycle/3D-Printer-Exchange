@@ -2,4 +2,4 @@ kind: Namespace
 apiVersion: v1
 metadata:
   name: sveltekit-frontend
-  namespace: frontend
+  namespace: 3d-printer-website-frontend
