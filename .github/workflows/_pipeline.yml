@@ -37,6 +37,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/vandercycle/3d-printer-exchange-frontend:latest  
 
+      -
         name: Build and push Backend
         uses: docker/build-push-action@v5
         with:
