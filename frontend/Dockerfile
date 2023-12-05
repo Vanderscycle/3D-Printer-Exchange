@@ -13,11 +13,10 @@ ENV PATH /root/.pnpm/bin:$PATH
 COPY . .
 
 # Install dependencies
-RUN pnpm install --frozen-lockfile --prod
+RUN pnpm install --frozen-lockfile
 
 # Build the app and prune dev dependencies
-RUN pnpm run build && pnpm prune --production
-
+RUN pnpm run build
 # Use a separate stage to minimize the final image size
 FROM node:18-alpine
 # It's a good practice to not run the application as root; use the node user instead
