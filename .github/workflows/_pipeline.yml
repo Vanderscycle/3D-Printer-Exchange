@@ -33,7 +33,7 @@ jobs:
           context: ./frontend
           file: ./frontend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/vandercycle/3d-printer-exchange-frontend:latest  
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/3d-printer-exchange-frontend:latest  
 
       -
         name: Build and push Backend
@@ -42,4 +42,4 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/vandercycle/3d-printer-exchange-backend:latest  
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/3d-printer-exchange-backend:latest  
