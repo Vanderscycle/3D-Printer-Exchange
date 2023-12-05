@@ -1,6 +1,5 @@
 on:
   workflow_call:
-
     secrets:
       DOCKER_HUB_USERNAME:
         required: true
@@ -12,7 +11,6 @@ on:
         type: boolean
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
