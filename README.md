@@ -1,5 +1,9 @@
 # 3D Printer Exchange 
 
+## Status
+- [![Pipeline: Non-prod](https://github.com/Vanderscycle/3D-Printer-Exchange/actions/workflows/pipeline-non-prod.yml/badge.svg)](https://github.com/Vanderscycle/3D-Printer-Exchange/actions/workflows/pipeline-non-prod.yml)
+- [![Pipeline: Production](https://github.com/Vanderscycle/3D-Printer-Exchange/actions/workflows/pipeline-prod.yml/badge.svg)](https://github.com/Vanderscycle/3D-Printer-Exchange/actions/workflows/pipeline-prod.yml)
+
 A proof of competence displaying my full stack and devops abilities.
 
 ## Localhost deployment
