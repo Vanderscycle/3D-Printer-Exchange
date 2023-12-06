@@ -3,12 +3,3 @@ kind: Kustomization
 
 resources:
   - ../../base
-
-patchesJson6902:
-- target:
-    kind: Deployment
-    name: sveltekit-frontend
-  patch: |-
-    - op: replace
-      path: /spec/template/spec/containers/0/image
-      value: localhost:5000/frontend-sveltekit
