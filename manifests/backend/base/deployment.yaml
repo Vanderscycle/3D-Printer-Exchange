@@ -15,6 +15,12 @@ spec:
           envFrom:
             - configMapRef:
                 name: gofiber-backend-cm
+          env:
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: gofiber-secret
+                  key: DATABASE_PASSWORD
           resources:
             requests:
               cpu: 300m
