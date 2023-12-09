@@ -30,7 +30,14 @@ func Connect() {
 	if err != nil {
 		fmt.Println("Error parsing str to int")
 	}
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=disable TimeZone=Asia/Shanghai", config.Config("DATABASE_HOST"), config.Config("DATABASE_USER"), config.Config("DATABASE_PASSWORD"), config.Config("DATABASE_NAME"), port)
+
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=disable TimeZone=Asia/Shanghai",
+		config.ReadEnvVariableWithDefault("DATABASE_HOST"),
+		config.ReadEnvVariableWithDefault("DATABASE_USER"),
+		config.ReadEnvVariableWithDefault("DATABASE_PASSWORD"),
+		config.ReadEnvVariableWithDefault("DATABASE_NAME"),
+		port)
+
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
 		Logger: logger.Default.LogMode(logger.Info),
 	})
@@ -42,6 +49,7 @@ func Connect() {
 
 	log.Println("Connected")
 	db.Logger = logger.Default.LogMode(logger.Info)
+
 	log.Println("running migrations")
 	db.AutoMigrate(&model.User{}, &model.Printer{})
 

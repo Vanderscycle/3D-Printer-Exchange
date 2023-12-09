@@ -18,12 +18,22 @@ func LocalEnvFile() {
 		}
 	}
 }
-func Config(key string) string {
 
-	// Check if the environment variable exists and use it if available
+func ReadEnvVariableWithDefault(key string) string {
+	return ReadEnvVariable(key, true)
+}
+
+func ReadEnvVariable(key string, debug bool) string {
 	envValue := os.Getenv(key)
+
 	if envValue == "" {
-		fmt.Sprintf("Error loading %s",key)
+		fmt.Printf("Error loading %s\n", key)
+		return "" // or return some default value
 	}
+
+	if debug {
+		fmt.Printf("%s: %s\n", key, envValue)
+	}
+
 	return envValue
 }
