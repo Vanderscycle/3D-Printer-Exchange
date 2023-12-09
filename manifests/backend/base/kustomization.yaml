@@ -22,3 +22,4 @@ resources:
   - ./rolebinding.yaml
   - ./serviceaccount.yaml
   - ./configmap.yaml
+  - secrets

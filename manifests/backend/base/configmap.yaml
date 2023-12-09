@@ -4,10 +4,10 @@ kind: ConfigMap
 metadata:
   name: gofiber-backend-cm
 data:
-  DATABASE_HOST: db-postgresql.postgres
+
+  DATABASE_HOST: db-postgresql.3d-printer-website-postgres-db
   DATABASE_PORT: "5432"
   DATABASE_USER: postgres
-  DATABASE_PASSWORD: postgres
   DATABASE_NAME: postgres
   BASE_PORT: "8080"
 
