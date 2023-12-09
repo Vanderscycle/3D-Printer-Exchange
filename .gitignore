@@ -1,3 +1,7 @@
+.env
+secret.yaml
+*-kubeconfig.yaml
+
 .DS_Store
 .idea
 *.log
