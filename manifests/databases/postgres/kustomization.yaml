@@ -11,10 +11,11 @@ commonLabels:
 
 resources:
 - namespace.yaml
+- secrets
 
 helmCharts:
 - name: postgresql
-  version: 12.1.6
+  version: 13.2.4
   repo: https://charts.bitnami.com/bitnami
   valuesFile: values.yaml
   namespace: 3d-printer-website-postgres-db
