@@ -16,6 +16,10 @@ Just time `tilt up` in the root of the folder to get started
 
 There are a variety of tools available to simulate a kubernetes cluster. In this case we rely on `kind` because it allows us to simulate a multi-node cluster. When used with `ctlptl`
 
+## Cloud deployment
+
+Currently using Argocd to pull the repo and run the kubernetes manifest files. 
+
 ### Kind
 
 To create the cluster run `ctlptl apply -f ./devops/localhost/kind.yaml`
@@ -41,3 +45,4 @@ This stack packages itself into its respective containers (e.g. backend/frontend
 - [king](https://kind.sigs.k8s.io/docs/user/quick-start/)
 - [Gofiber](https://github.com/gofiber/fiber)
 - [SvelteKit]()
+
